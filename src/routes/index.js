@@ -1,32 +1,29 @@
-const { pingController } = require('../controllers/ping-controller');
-const { busCreateController } = require('../controllers/bus-controller');
-const bodyParser = require('body-parser');
+const { pingController } = require("../controllers/ping-controller");
+const { busCreateController } = require("../controllers/bus-controller");
+const bodyParser = require("body-parser");
 
 function initExpressRoutes(app, client, logger) {
-    // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: false }))
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: false }));
 
-    // parse application/json
-    app.use(bodyParser.json())
-    app.use((req, res, next) => {
-        /**
+  // parse application/json
+  app.use(bodyParser.json());
+  app.use((req, res, next) => {
+    /**
         The following line attaches the MongoDB client to the request object 
         * */
-        req.client = client;
-        req.logger = logger;
-        next();
-    })
+    req.client = client;
+    req.logger = logger;
+    next();
+  });
 
-    app.get('/ping', pingController);
-    app.post('/bus', busCreateController)
+  app.get("/ping", pingController);
+  app.post("/bus", busCreateController);
 
-
-    //Add more routes
+  //Add more routes
 }
 
-
 module.exports = initExpressRoutes;
-
 
 /*   --------<!Error!>----------
 module.exports = initExpressRoutes();

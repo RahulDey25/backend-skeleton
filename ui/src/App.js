@@ -1,16 +1,11 @@
 import './App.css';
-import ExampleCalendar from './example-component/calender';
-import ExampleCard from './example-component/card';
+
 
 function App() {
   return (
-   <div>
-    <h1>Skeleton App</h1>
-    <ExampleCalendar/>
-    <br />
-    <br />
-    <ExampleCard/>
-   </div>
+    <div>
+      <h1>Skeleton App</h1>
+    </div>
   );
 }
 
